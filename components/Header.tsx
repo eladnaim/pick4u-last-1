@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { Bell, Menu } from 'lucide-react';
+import { Bell, Menu, Share2 } from 'lucide-react';
 import { Logo } from './Logo';
 
 interface HeaderProps {
@@ -8,6 +7,12 @@ interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({ karma }) => {
+  
+  const handleShare = () => {
+    const text = encodeURIComponent("היי! מצאתי אפליקציה גאונית לאיסוף חבילות בשכונה - Pick4U. בואו נעזור אחד לשני!");
+    window.open(`https://wa.me/?text=${text}`, '_blank');
+  };
+
   return (
     <div className="fixed top-0 left-0 right-0 z-20 bg-white/90 backdrop-blur-xl border-b border-slate-100 px-4 py-3 safe-area-top shadow-sm">
       <div className="grid grid-cols-3 items-center">
@@ -29,12 +34,16 @@ export const Header: React.FC<HeaderProps> = ({ karma }) => {
         
         {/* Right: Actions */}
         <div className="flex justify-end items-center gap-2">
+          <button 
+            onClick={handleShare}
+            className="p-2 rounded-full hover:bg-slate-50 transition-colors text-green-600"
+            title="שתף בוואטסאפ"
+          >
+            <Share2 className="w-5 h-5" />
+          </button>
           <button className="p-2 rounded-full hover:bg-slate-50 transition-colors relative">
             <Bell className="w-5 h-5 text-slate-600" />
             <span className="absolute top-2 right-2 w-1.5 h-1.5 bg-red-500 rounded-full ring-1 ring-white"></span>
-          </button>
-          <button className="p-2 rounded-full hover:bg-slate-50 transition-colors">
-            <Menu className="w-5 h-5 text-slate-600" />
           </button>
         </div>
 

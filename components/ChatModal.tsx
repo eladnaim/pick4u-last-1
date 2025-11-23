@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { X, Send, User as UserIcon, Handshake, ShieldCheck, Check, Star, Package, Lock, Play, CreditCard, Eye, Bike } from 'lucide-react';
 import { PackageRequest, User } from '../types';
@@ -135,7 +134,7 @@ export const ChatModal: React.FC<ChatModalProps> = ({ currentUser, request, onCl
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-brand-950/60 flex flex-col justify-end sm:justify-center backdrop-blur-sm" dir="rtl">
+    <div className="fixed inset-0 z-50 bg-brand-950/60 flex flex-col justify-end sm:justify-center backdrop-blur-sm">
        
        {/* Scooter Animation Overlay */}
        {showAnimation && (
@@ -171,7 +170,7 @@ export const ChatModal: React.FC<ChatModalProps> = ({ currentUser, request, onCl
        <div className="bg-white w-full sm:max-w-md sm:mx-auto h-[90vh] sm:h-[600px] rounded-t-3xl sm:rounded-2xl flex flex-col shadow-2xl animate-in slide-in-from-bottom-10 duration-300 overflow-hidden relative">
          
          {/* Header */}
-         <div className="p-4 border-b border-slate-100 flex justify-between items-center bg-white/80 backdrop-blur-md z-10 absolute top-0 left-0 right-0 rounded-t-3xl">
+         <div className="p-4 border-b border-slate-100 flex justify-between items-center bg-white/80 backdrop-blur-md z-10 absolute top-0 left-0 right-0">
            <div className="flex items-center gap-3">
              <div className="relative">
                 <img src={request.requester.avatar} className="w-10 h-10 rounded-full border border-slate-200" alt="" />

@@ -13,6 +13,7 @@ export interface User {
   community: string;
   isCollectorMode: boolean;
   isUniversalCollector: boolean;
+  hasCompletedOnboarding?: boolean;
 }
 
 export const CITIES = ['מיתר', 'באר שבע', 'תל אביב', 'עומר', 'להבים'];

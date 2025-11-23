@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect, useState, useCallback } from 'react';
 import { X, Camera, Image as ImageIcon, Type, Upload, FileText, ScanLine, AlertCircle } from 'lucide-react';
 import { analyzePackageImage, analyzePackageText } from '../services/geminiService';
