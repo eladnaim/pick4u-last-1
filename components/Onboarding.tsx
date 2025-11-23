@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { User, CITIES, DEFAULT_COMMUNITIES } from '../types';
 import { Logo } from './Logo';
-import { ShieldCheck } from 'lucide-react';
+import { ShieldCheck, UserPlus, LogIn } from 'lucide-react';
+import { ExistingUserLogin } from './ExistingUserLogin';
 
 interface OnboardingProps {
   onComplete: (userData: Partial<User>) => void;
@@ -12,6 +13,7 @@ export const Onboarding: React.FC<OnboardingProps> = ({ onComplete }) => {
   const [community, setCommunity] = useState(DEFAULT_COMMUNITIES[CITIES[0]][0]);
   const [name, setName] = useState('');
   const [acceptedTerms, setAcceptedTerms] = useState(false);
+  const [showExistingUserLogin, setShowExistingUserLogin] = useState(false);
 
   const handleCityChange = (newCity: string) => {
     setCity(newCity);
@@ -29,6 +31,25 @@ export const Onboarding: React.FC<OnboardingProps> = ({ onComplete }) => {
     }
   };
 
+  const handleExistingUserLogin = (userData: { id: string; name: string }) => {
+    onComplete({
+      id: userData.id,
+      name: userData.name,
+      city,
+      community,
+      hasCompletedOnboarding: true
+    });
+  };
+
+  if (showExistingUserLogin) {
+    return (
+      <ExistingUserLogin 
+        onLogin={handleExistingUserLogin}
+        onBack={() => setShowExistingUserLogin(false)}
+      />
+    );
+  }
+
   return (
     <div className="fixed inset-0 z-[100] bg-white overflow-y-auto" dir="rtl">
       <div className="min-h-screen flex items-center justify-center p-4">
@@ -38,6 +59,21 @@ export const Onboarding: React.FC<OnboardingProps> = ({ onComplete }) => {
             <Logo className="w-20 h-20 mb-4 mx-auto" animated />
             <h1 className="text-2xl font-bold text-brand-950 mb-2">ברוכים הבאים ל-Pick4U</h1>
             <p className="text-slate-500 text-center text-sm">הקהילה שעוזרת לך לחסוך זמן בדואר.</p>
+          </div>
+
+          {/* Existing User Login Option */}
+          <div className="mb-6">
+            <button
+              onClick={() => setShowExistingUserLogin(true)}
+              className="w-full p-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl flex items-center justify-center space-x-3 hover:shadow-lg transition-all duration-300 mb-3"
+            >
+              <LogIn className="w-5 h-5" />
+              <span className="font-semibold">התחבר כמשתמש קיים</span>
+            </button>
+            
+            <div className="text-center">
+              <span className="text-sm text-slate-500">או</span>
+            </div>
           </div>
 
           <div className="space-y-3 mb-4">
