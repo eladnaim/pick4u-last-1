@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { User, CITIES, DEFAULT_COMMUNITIES } from '../types';
 import { MapPin, Shield, LogOut, ChevronLeft, Building2, Users, Plus, Navigation, Globe2, Star, Edit3, Save } from 'lucide-react';
@@ -118,7 +117,7 @@ export const Profile: React.FC<ProfileProps> = ({ user, onUpdateUser }) => {
            <>
             <h2 className="text-2xl font-bold mt-4 text-brand-950 flex items-center gap-2">
               {user.name}
-              <button onClick={() => setIsEditing(true)} className="text-slate-400 hover:text-brand-500">
+              <button onClick={() => setIsEditing(true)} className="text-slate-400 hover:text-brand-500 transition-colors">
                 <Edit3 className="w-4 h-4" />
               </button>
             </h2>
@@ -157,7 +156,7 @@ export const Profile: React.FC<ProfileProps> = ({ user, onUpdateUser }) => {
                <select 
                  value={user.city} 
                  onChange={(e) => handleCityChange(e.target.value)}
-                 className="w-full bg-slate-50 border border-slate-200 rounded-lg p-2.5 text-sm"
+                 className="w-full bg-slate-50 border border-slate-200 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-brand-500 outline-none"
                >
                  {CITIES.map((c) => <option key={c} value={c}>{c}</option>)}
                </select>
@@ -176,11 +175,11 @@ export const Profile: React.FC<ProfileProps> = ({ user, onUpdateUser }) => {
                    <select 
                      value={user.community} 
                      onChange={(e) => onUpdateUser({ ...user, community: e.target.value })}
-                     className="w-full bg-slate-50 border border-slate-200 rounded-lg p-2.5 text-sm"
+                     className="w-full bg-slate-50 border border-slate-200 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-brand-500 outline-none"
                    >
                      {availableCommunities.map((c) => <option key={c} value={c}>{c}</option>)}
                    </select>
-                   <button onClick={() => setIsCreatingCommunity(true)} className="bg-brand-950 text-white p-2.5 rounded-lg">
+                   <button onClick={() => setIsCreatingCommunity(true)} className="bg-brand-950 text-white p-2.5 rounded-lg hover:bg-brand-900">
                      <Plus className="w-5 h-5" />
                    </button>
                  </div>

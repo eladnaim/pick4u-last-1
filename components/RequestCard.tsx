@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { PackageRequest, RequestStatus } from '../types';
 import { MapPin, Clock, Package, ShieldCheck, Sparkles, MessageCircle, Check } from 'lucide-react';
@@ -12,7 +11,6 @@ interface RequestCardProps {
 
 export const RequestCard: React.FC<RequestCardProps> = ({ request, onChatClick, onCollectClick, isOwner }) => {
   
-  // Progress Meter Logic
   const getStatusProgress = () => {
     switch(request.status) {
       case RequestStatus.PENDING: return '33%';
@@ -42,7 +40,7 @@ export const RequestCard: React.FC<RequestCardProps> = ({ request, onChatClick, 
               className="w-10 h-10 rounded-full object-cover border-2 border-white shadow-sm"
             />
             {request.isAiVerified && (
-              <div className="absolute -bottom-1 -right-1 bg-brand-500 text-white p-0.5 rounded-full border-2 border-white" title="AI Verified User">
+              <div className="absolute -bottom-1 -right-1 bg-blue-500 text-white p-0.5 rounded-full border-2 border-white" title="AI Verified User">
                 <Sparkles className="w-3 h-3" />
               </div>
             )}
@@ -66,13 +64,13 @@ export const RequestCard: React.FC<RequestCardProps> = ({ request, onChatClick, 
       <div className="space-y-2 mb-4 bg-slate-50 p-3 rounded-xl border border-slate-100">
         <div className="flex items-center gap-2 text-slate-600 text-sm">
           <MapPin className="w-4 h-4 text-slate-400 shrink-0" />
-          <span className="font-medium text-brand-900">{request.location}</span>
+          <span className="font-medium text-brand-950">{request.location}</span>
         </div>
         
         <div className="flex items-center gap-2 text-slate-600 text-sm">
           <Package className="w-4 h-4 text-slate-400 shrink-0" />
           {isOwner || !request.isHidden || isCompleted ? (
-             <span className="font-mono text-brand-900">{request.trackingNumber || 'מספר מעקב לא זמין'}</span>
+             <span className="font-mono text-brand-950">{request.trackingNumber || 'מספר מעקב לא זמין'}</span>
           ) : (
              <span className="text-slate-500 italic flex items-center gap-1">
                <ShieldCheck className="w-3 h-3" />
@@ -112,7 +110,7 @@ export const RequestCard: React.FC<RequestCardProps> = ({ request, onChatClick, 
         {!isCompleted && (
            <button 
              onClick={isOwner ? undefined : onCollectClick}
-             className="flex-1 bg-brand-950 text-white py-2.5 rounded-xl font-medium text-sm flex items-center justify-center gap-2 hover:bg-brand-800 transition-colors shadow-lg shadow-brand-950/10 active:scale-95"
+             className="flex-1 bg-brand-950 text-white py-2.5 rounded-xl font-medium text-sm flex items-center justify-center gap-2 hover:bg-brand-800 transition-colors shadow-lg shadow-brand-900/10 active:scale-95"
            >
             {isOwner ? 'נהל' : `אני אאסוף`}
            </button>
