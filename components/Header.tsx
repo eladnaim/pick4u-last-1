@@ -28,8 +28,9 @@ export const Header: React.FC<HeaderProps> = ({ karma }) => {
         </div>
 
         {/* Center: Logo */}
-        <div className="flex justify-center">
+        <div className="flex justify-center flex-col items-center">
           <Logo className="w-10 h-10" />
+          <span className="text-[8px] text-slate-400 mt-1">v1.0.1</span>
         </div>
         
         {/* Right: Actions */}
