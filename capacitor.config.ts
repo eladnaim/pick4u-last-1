@@ -6,6 +6,9 @@ const config: CapacitorConfig = {
   webDir: 'dist',
   server: {
     androidScheme: 'https'
+  },
+  ios: {
+    scheme: 'Pick4U'
   }
 };
 
