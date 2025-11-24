@@ -2,7 +2,7 @@ import { GoogleGenAI, Type } from "@google/genai";
 import { ScanResult } from "../types";
 
 // Using Gemini 2.5 Flash for superior multimodal understanding
-const API_KEY = process.env.API_KEY || process.env.VITE_API_KEY || process.env.GEMINI_API_KEY;
+const API_KEY = (import.meta as any)?.env?.VITE_GEMINI_API_KEY || process.env.GEMINI_API_KEY || process.env.API_KEY || process.env.VITE_API_KEY;
 let ai: GoogleGenAI | null = null;
 
 try {
